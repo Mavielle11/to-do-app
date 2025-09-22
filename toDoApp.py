@@ -1,4 +1,5 @@
 # toDoApp.py
+# Simple To-Do Application
 
 tasks = []
 
@@ -9,12 +10,12 @@ def show_menu():
     print("3. Remove task")
     print("4. Exit")
 
-def view_tasks():
-    if not tasks:
-        print("\nNo tasks found!")
+def showTasks():
+    if len(tasks) == 0:
+        print("No tasks yet.")
     else:
-        print("\nYour Tasks:")
-        for i, task in enumerate(tasks, start=1):
+        print("Tasks List:")
+        for i, task in enumerate(tasks, 1):  # Using enumerate for cleaner indexing
             print(f"{i}. {task}")
 
 def add_task():
