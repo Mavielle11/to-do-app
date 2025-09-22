@@ -10,12 +10,12 @@ def show_menu():
     print("3. Remove task")
     print("4. Exit")
 
-def showTasks():
-    if len(tasks) == 0:
-        print("No tasks yet.")
+def view_tasks():
+    if not tasks:
+        print("\nNo tasks yet.")
     else:
-        print("Tasks List:")
-        for i, task in enumerate(tasks, 1):  # Using enumerate for cleaner indexing
+        print("\nTasks List:")
+        for i, task in enumerate(tasks, 1):
             print(f"{i}. {task}")
 
 def add_task():
@@ -38,26 +38,20 @@ def remove_task():
 
 def main():
     while True:
-        print("1. Add Task")
-        print("2. Show Tasks")
-        print("3. Remove Task")
-        print("4. Exit")
-        ch = input("Enter choice: ")
+        show_menu()
+        choice = input("\nEnter choice: ")
 
-        if ch == "1":
-            t = input("Enter task: ")
-            addtask(t)
-        elif ch == "2":
-            showTasks()
-        elif ch == "3":
-            n = int(input("Enter task number to remove: "))
-            removetask(n)   
-        elif ch == "4":
-            print("Exiting...")
+        if choice == "1":
+            view_tasks()
+        elif choice == "2":
+            add_task()
+        elif choice == "3":
+            remove_task()
+        elif choice == "4":
+            print("Exiting To-Do App. Goodbye!")
             break
         else:
-            print("Wrong choice!")
-
+            print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()
