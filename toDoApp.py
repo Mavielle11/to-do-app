@@ -12,10 +12,10 @@ def show_menu():
 
 def view_tasks():
     if not tasks:
-        print("\nNo tasks found!")
+        print("\nNo tasks yet.")
     else:
-        print("\nYour Tasks:")
-        for i, task in enumerate(tasks, start=1):
+        print("\nTasks List:")
+        for i, task in enumerate(tasks, 1):
             print(f"{i}. {task}")
 
 def add_task():
@@ -39,8 +39,8 @@ def remove_task():
 def main():
     while True:
         show_menu()
-        choice = input("\nEnter your choice: ")
-        
+        choice = input("\nEnter choice: ")
+
         if choice == "1":
             view_tasks()
         elif choice == "2":
@@ -53,5 +53,5 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
