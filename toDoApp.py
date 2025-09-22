@@ -37,20 +37,26 @@ def remove_task():
 
 def main():
     while True:
-        show_menu()
-        choice = input("\nEnter your choice: ")
-        
-        if choice == "1":
-            view_tasks()
-        elif choice == "2":
-            add_task()
-        elif choice == "3":
-            remove_task()
-        elif choice == "4":
-            print("Exiting To-Do App. Goodbye!")
+        print("1. Add Task")
+        print("2. Show Tasks")
+        print("3. Remove Task")
+        print("4. Exit")
+        ch = input("Enter choice: ")
+
+        if ch == "1":
+            t = input("Enter task: ")
+            addtask(t)
+        elif ch == "2":
+            showTasks()
+        elif ch == "3":
+            n = int(input("Enter task number to remove: "))
+            removetask(n)   
+        elif ch == "4":
+            print("Exiting...")
             break
         else:
-            print("Invalid choice. Please try again.")
+            print("Wrong choice!")
+
 
 if __name__ == "__main__":
     main()
