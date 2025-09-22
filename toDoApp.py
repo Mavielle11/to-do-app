@@ -1,39 +1,57 @@
 # toDoApp.py
+# Simple To-Do Application
 
-tasks=[]
+tasks = []
 
-def addtask(task) :
-  tasks.append(task)
-  print("task added!")
+def show_menu():
+    print("\n==== TO-DO APP ====")
+    print("1. View tasks")
+    print("2. Add task")
+    print("3. Remove task")
+    print("4. Exit")
 
-def showTasks( ):
-    if len(tasks)==0 :
-      print("no tasks yet")
+def view_tasks():
+    if not tasks:
+        print("\nNo tasks found!")
     else:
-     for i in range (len(tasks)):
-      print(i+1,".",tasks[i])
+        print("\nYour Tasks:")
+        for i, task in enumerate(tasks, start=1):
+            print(f"{i}. {task}")
 
-def removetask(tasknumber):
-    tasks.pop(tasknumber) 
-    print("task removed!!")
+def add_task():
+    task = input("\nEnter new task: ")
+    tasks.append(task)
+    print(f"Task '{task}' added.")
+
+def remove_task():
+    view_tasks()
+    if tasks:
+        try:
+            index = int(input("\nEnter the number of the task to remove: ")) - 1
+            if 0 <= index < len(tasks):
+                removed = tasks.pop(index)
+                print(f"Task '{removed}' removed.")
+            else:
+                print("Invalid task number.")
+        except ValueError:
+            print("Please enter a valid number.")
 
 def main():
     while True:
-        print("1 Add Task")
-        print("2.Show Tasks")
-        print("3.Remove Task")
-        print("4- Exit")
-        ch = input("enter choice : ")
-        if ch=="1":
-            t = input("enter task : ")
-            addtask(t)
-        elif ch=="2":
-            showTasks()
-        elif ch=="3":
-            n=int(input("enter task no to remove: "))
-            removetask(n)   
-        elif ch=="4":
-            break;
+        show_menu()
+        choice = input("\nEnter your choice: ")
+        
+        if choice == "1":
+            view_tasks()
+        elif choice == "2":
+            add_task()
+        elif choice == "3":
+            remove_task()
+        elif choice == "4":
+            print("Exiting To-Do App. Goodbye!")
+            break
         else:
-            print("wrong choice!!")
-main()
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
